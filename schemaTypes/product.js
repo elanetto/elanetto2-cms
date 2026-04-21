@@ -26,14 +26,30 @@ export default {
       title: 'Pris (NOK)',
       type: 'number',
     },
+
+    // 🔥 NY: FLERE BILDER + ALT TEXT
     {
-      name: 'image',
-      title: 'Bilde',
-      type: 'image',
-      options: {
-        hotspot: true,
-      },
+      name: 'images',
+      title: 'Bilder',
+      type: 'array',
+      of: [
+        {
+          type: 'image',
+          options: {
+            hotspot: true,
+          },
+          fields: [
+            {
+              name: 'alt',
+              title: 'Alt-tekst',
+              type: 'string',
+              description: 'Beskriv bildet (for tilgjengelighet og SEO)',
+            },
+          ],
+        },
+      ],
     },
+
     {
       name: 'description',
       title: 'Beskrivelse',
@@ -91,4 +107,10 @@ export default {
       },
     },
   ],
+  preview: {
+    select: {
+      title: 'title.no',
+      media: 'images.0.asset',
+    },
+  },
 }
